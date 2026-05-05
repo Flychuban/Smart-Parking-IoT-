@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "author": "Smart Parking",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "status",
+      "top": -50,
+      "left": -120,
+      "attrs": { "color": "yellow", "label": "STATUS" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 30, "left": -120, "attrs": { "value": "220" } },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "s1",
+      "top": -200,
+      "left": 250,
+      "attrs": { "distance": "200" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "s2",
+      "top": -50,
+      "left": 250,
+      "attrs": { "distance": "200" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "s3",
+      "top": 97.5,
+      "left": 187.9,
+      "attrs": { "distance": "200" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "s4",
+      "top": 250,
+      "left": 250,
+      "attrs": { "distance": "200" }
+    }
+  ],
+  "connections": [
+    [ "esp:D2",    "r1:1",     "orange", [] ],
+    [ "r1:2",      "status:A", "orange", [] ],
+    [ "status:C",  "esp:GND.2", "black",  [] ],
+
+    [ "esp:5V",    "s1:VCC",   "red",    [] ],
+    [ "esp:GND.1", "s1:GND",   "black",  [] ],
+    [ "esp:D5",    "s1:TRIG",  "green",  [] ],
+    [ "esp:D4",    "s1:ECHO",  "yellow", [] ],
+
+    [ "esp:5V",    "s2:VCC",   "red",    [] ],
+    [ "esp:GND.2", "s2:GND",   "black",  [] ],
+    [ "esp:D18",   "s2:TRIG",  "green",  [] ],
+    [ "esp:D19",   "s2:ECHO",  "yellow", [] ],
+
+    [ "esp:5V",    "s3:VCC",   "red",    [] ],
+    [ "esp:GND.3", "s3:GND",   "black",  [] ],
+    [ "esp:D21",   "s3:TRIG",  "green",  [] ],
+    [ "esp:D22",   "s3:ECHO",  "yellow", [] ],
+
+    [ "esp:5V",    "s4:VCC",   "red",    [] ],
+    [ "esp:GND.1", "s4:GND",   "black",  [] ],
+    [ "esp:D23",   "s4:TRIG",  "green",  [] ],
+    [ "esp:D25",   "s4:ECHO",  "yellow", [] ]
+  ],
+  "dependencies": {}
+}

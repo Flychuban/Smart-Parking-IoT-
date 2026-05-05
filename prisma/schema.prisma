@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ParkingSpot {
+  id          Int           @id @default(autoincrement())
+  label       String        @unique
+  isOccupied  Boolean       @default(false)
+  distanceCm  Float?
+  lastUpdated DateTime      @updatedAt
+  events      SensorEvent[]
+}
+
+model SensorEvent {
+  id         Int         @id @default(autoincrement())
+  spotId     Int
+  spot       ParkingSpot @relation(fields: [spotId], references: [id])
+  status     String
+  distanceCm Float
+  timestamp  DateTime    @default(now())
+}

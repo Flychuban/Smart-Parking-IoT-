@@ -1,0 +1,2 @@
+# Wokwi bundles WiFi.h, HTTPClient.h, and WiFiClientSecure.h with the ESP32
+# core, so no extra libraries are required.
